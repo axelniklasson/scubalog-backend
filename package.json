@@ -1,0 +1,16 @@
+{
+  "name": "scubalog-backend",
+  "version": "0.0.1",
+  "description": "Backend for scubalog.io",
+  "author": "Axel Niklasson <hello@axelniklasson.se>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.11.3",
+    "mysql": "^2.13.0"
+  }
+}
