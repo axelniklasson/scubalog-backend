@@ -5,7 +5,8 @@
   "author": "Axel Niklasson <hello@axelniklasson.se>",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app/server.js",
+    "dev": "nodemon app/server.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",

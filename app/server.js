@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 /* Connect to DB */
-const dbHost = 'mongodb://database/scubalog';
+const dbHost = 'mongodb://localhost:27017/scubalog';
 mongoose.connect(dbHost);
 
 // Init express app
@@ -19,5 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 /* Routing */
 app.use('/', require('./routes/base'));
+app.use('/dives', require('./routes/dives'));
+app.use('/divers', require('./routes/divers'));
 
 app.listen(PORT);
