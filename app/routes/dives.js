@@ -5,8 +5,8 @@ var Dive = require('../models/dive');
 router.get('/', function(req, res) {
     req.query.skip ? skip = parseInt(req.query.skip) : skip = 0;
     req.query.take ? take = parseInt(req.query.take) : take = 0;
-
-    Dive.find({}).populate('diver').skip(skip).limit(take).sort({ date: 1 }).exec(function(err, dives) {
+    
+    Dive.find({ diver: req.query.diverID }).populate('diver').skip(skip).limit(take).sort({ date: 1 }).exec(function(err, dives) {
         if (err) {
             res.status(500).json({ 'Error': 'Could not get dives. Stack trace: ' + err });
         } else {
@@ -16,14 +16,10 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    var model = req.body;
-    model.diver = "596b7a88667e3e65497ed070";
-
-    Dive.create(model, function(err, dive) {
+    Dive.create(req.body, function(err, dive) {
         if (err) {
             res.status(500).json({ 'Error': 'Could not create dive. Stack trace: ' + err });
         } else {
-            console.log(dive);
             res.json(dive);
         }
     });
@@ -31,12 +27,10 @@ router.post('/', function(req, res) {
 
 router.put('/:id', function(req, res) {
     var ID = req.params.id;
-    var model = req.body;
-    model.diver = "596b7a88667e3e65497ed070";
-    model.date = new Date(model.date);
-    // console.log(model);
+    var dive = req.body;
+    dive.date = new Date(dive.date);
 
-    Dive.update({ _id: ID }, model, function(err, dive) {
+    Dive.update({ _id: ID }, dive, function(err, dive) {
         if (err) {
             res.status(500).json({ 'Error': 'Could not update dive. Stack trace: ' + err });
         } else {
