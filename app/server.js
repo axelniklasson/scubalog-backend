@@ -1,22 +1,27 @@
 'use strict';
 
 // Import dependencies
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-/* Connect to DB */
-const dbHost = 'mongodb://localhost:27017/scubalog';
-mongoose.connect(dbHost, { useMongoClient: true });
+var express = require('express');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var cors = require('cors');
 
 // Init express app
-const app = express();
-const PORT = process.env.PORT || '8080';
+var app = express();
+var PORT = process.env.PORT || '8080';
 
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+/* Environment settings */
+if (process.env.NODE_ENV == 'DEV') {
+    require('./env.js');
+}
+
+/* Connect to DB */
+var dbHost = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PASS + '@' + process.env.MONGO_HOST + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_DATABASE;
+mongoose.connect(dbHost, { useMongoClient: true });
 
 // CORS support
 app.use(cors());

@@ -5,14 +5,14 @@
   "author": "Axel Niklasson <hello@axelniklasson.se>",
   "main": "server.js",
   "scripts": {
-    "start": "node app/server.js",
-    "dev": "nodemon app/server.js"
+    "start": "NODE_ENV=PROD node app/server.js",
+    "dev": "NODE_ENV=DEV nodemon app/server.js",
+    "deploy": "gcloud app deploy"
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "cors": "^2.8.4",
-    "express": "^4.13.3",
-    "mongoose": "^4.11.3",
-    "mysql": "^2.13.0"
+    "body-parser": "1.17.2",
+    "cors": "2.8.4",
+    "express": "4.13.3",
+    "mongoose": "4.11.3"
   }
 }
