@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var DiveSchema = new mongoose.Schema({
     date: { type: Date },
     diver: { type: mongoose.Schema.ObjectId, ref: 'Diver', required: true },
+    buddy: { type: mongoose.Schema.ObjectId, ref: 'Diver' },
     maxDepth: { type: Number, default: 0, required: true },
     avgDepth: { type: Number, default: 0 },
     temperature: { type: Number, default: 0 },
