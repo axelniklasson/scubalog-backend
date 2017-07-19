@@ -30,5 +30,6 @@ app.use(cors());
 app.use('/', require('./routes/base'));
 app.use('/dives', require('./routes/dives'));
 app.use('/divers', require('./routes/divers'));
+app.use('/stats', require('./routes/stats'));
 
 app.listen(PORT);
