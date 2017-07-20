@@ -61,7 +61,6 @@ router.get('/buddies', function(req, res) {
                 console.log(err);
                 res.status(500).json({ 'Error': 'Could not get divers. Stack trace: ' + err });
             } else {
-
                 Diver.find({ _id: { '$in': diver.buddies } }).exec(function(err, buddies) {
                     if (err) {
                         res.status(500).json({ 'Error': 'Could not get buddies. Stack trace: ' + err });

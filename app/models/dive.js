@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var DiveSchema = new mongoose.Schema({
+    count: { type: Number, default: 1 },
     date: { type: Date },
     diver: { type: mongoose.Schema.ObjectId, ref: 'Diver', required: true },
     buddy: { type: mongoose.Schema.ObjectId, ref: 'Diver' },
