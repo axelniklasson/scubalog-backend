@@ -8,7 +8,7 @@ var cors = require('cors');
 
 // Init express app
 var app = express();
-var PORT = process.env.PORT || '8080';
+var PORT = process.env.PORT || 8080;
 
 // Parsers for POST data
 app.use(bodyParser.json());
