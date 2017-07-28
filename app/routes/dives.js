@@ -32,8 +32,10 @@ router.put('/:id', function(req, res) {
     if (dive.diver._id) {
         dive.diver = dive.diver._id;
     }
-    if (dive.buddy._id) {
-        dive.buddy = dive.buddy._id;
+    if (dive.buddy) {
+        if (dive.buddy._id) {
+            dive.buddy = dive.buddy._id;
+        }
     }
 
     Dive.findOneAndUpdate({ _id: diveID }, dive, { new: true }).populate('buddy').exec(function(err, dive) {
