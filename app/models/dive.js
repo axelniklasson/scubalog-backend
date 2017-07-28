@@ -11,7 +11,9 @@ var DiveSchema = new mongoose.Schema({
     weight: { type: Number, default: 0 },
     minutes: { type: Number, default: 0, required: true },
     site: { type: String, required: true },
-    notes: { type: String }
+    notes: { type: String },
+    startBar: { type: Number },
+    endBar: { type: Number }
 });
 
 module.exports = mongoose.model('Dive', DiveSchema);
