@@ -7,7 +7,13 @@ var ObjectId = Mongoose.Types.ObjectId;
 
 router.get('/', function(req, res) {
     var diverID = req.query.diverID;
-    var stats = {};
+    var stats = {
+        diveCount: 0,
+        totalDiveTime: 0,
+        firstDive: 0,
+        lastDive: 0,
+        maxDepth: 0
+    };
 
     Dive.aggregate([
         {
@@ -31,11 +37,14 @@ router.get('/', function(req, res) {
             }
         }
     ]).exec(function(err, data) {
-        stats.diveCount = data[0].diveCount;
-        stats.totalDiveTime = data[0].totalDiveTime;
-        stats.firstDive = data[0].firstDive;
-        stats.lastDive = data[0].lastDive;
-        stats.maxDepth = data[0].maxDepth;
+
+        if (data.length == 1) {
+            stats.diveCount = data[0].diveCount;
+            stats.totalDiveTime = data[0].totalDiveTime;
+            stats.firstDive = data[0].firstDive;
+            stats.lastDive = data[0].lastDive;
+            stats.maxDepth = data[0].maxDepth;
+        }
 
         if (err) {
             console.log(err);
