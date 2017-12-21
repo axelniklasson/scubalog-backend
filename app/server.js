@@ -14,19 +14,19 @@ var PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-/* Environment settings */
+// Environment settings
 if (process.env.NODE_ENV == 'DEV') {
     require('./env.js');
 }
 
-/* Connect to DB */
+// Connect to DB
 var dbHost = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PASS + '@' + process.env.MONGO_HOST + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_DATABASE;
 mongoose.connect(dbHost, { useMongoClient: true });
 
 // CORS support
 app.use(cors());
 
-/* Routing */
+// Routing
 app.use('/', require('./routes/base'));
 app.use('/dives', require('./routes/dives'));
 app.use('/divers', require('./routes/divers'));

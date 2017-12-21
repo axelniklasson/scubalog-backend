@@ -6,8 +6,7 @@
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=PROD node app/server.js",
-    "dev": "NODE_ENV=DEV nodemon app/server.js",
-    "deploy": "gcloud app deploy"
+    "dev": "NODE_ENV=DEV nodemon app/server.js"
   },
   "dependencies": {
     "body-parser": "1.17.2",

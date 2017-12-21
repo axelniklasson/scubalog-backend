@@ -4,3 +4,4 @@ data
 *.log
 app.yaml
 app/env.js
+*.swp
