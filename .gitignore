@@ -2,7 +2,6 @@ node_modules
 data
 .DS_Store
 *.log
-app.yaml
 app/dev.env.js
 app/prod.env.js
 *.swp
