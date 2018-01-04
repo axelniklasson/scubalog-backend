@@ -3,5 +3,6 @@ data
 .DS_Store
 *.log
 app.yaml
-app/env.js
+app/dev.env.js
+app/prod.env.js
 *.swp
